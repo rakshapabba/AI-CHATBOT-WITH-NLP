@@ -1,0 +1,51 @@
+import nltk
+import random
+import string
+
+from nltk.chat.util import Chat, reflections
+
+# Make sure you have these, or uncomment to download
+# nltk.download('punkt')
+# nltk.download('wordnet')
+
+# Define pairs of inputs and outputs
+pairs = [
+    [
+        r"hi|hello|hey",
+        ["Hello! How can I assist you today?", "Hi there! What can I do for you?", "Hey! Need any help?"]
+    ],
+    [
+        r"what is your name?",
+        ["I am a chatbot created for CodTech internship!", "You can call me CodTechBot."]
+    ],
+    [
+        r"how are you?",
+        ["I'm doing well, thank you! How can I help you today?", "I'm great! What about you?"]
+    ],
+    [
+        r"(.*) your internship end date?",
+        ["The completion certificate will be issued on your internship end date."]
+    ],
+    [
+        r"(.*) (help|support)",
+        ["Sure, I am here to help you. Please tell me your query."]
+    ],
+    [
+        r"quit|exit",
+        ["Goodbye! Have a nice day!", "See you soon! Take care."]
+    ],
+    [
+        r"(.*)",
+        ["I'm sorry, I didn't understand that. Could you please rephrase?"]
+    ]
+]
+
+# Create Chatbot
+def codtech_chatbot():
+    print("CodTechBot: Hello! I am CodTechBot. Type 'quit' to exit.")
+    chat = Chat(pairs, reflections)
+    chat.converse()
+
+# Run the chatbot
+if __name__ == "__main__":
+    codtech_chatbot()
